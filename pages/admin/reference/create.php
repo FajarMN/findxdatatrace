@@ -16,6 +16,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - FINDxDataTrace</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
         body {
@@ -161,6 +162,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             padding: 10px 0;
             font-weight: bold;
         }
+
+        .label-name {
+            margin-top: 500px;
+        }
     </style>
 </head>
 
@@ -170,11 +175,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </header>
 
     <div class="container">
-    <div class="wrapper">
+        <div class="wrapper">
             <section>
                 <h2>Tambah referensi Baru</h2>
                 <form action="functions/create.php" method="POST">
+                    <label class="mb-1">Nama Referensi</label>
                     <input type="text" name="name" placeholder="Nama Referensi" required>
+                    <label class="mb-3">Kategori</label>
                     <select name="type" id="type">
                         <option value="Osint">Osint</option>
                         <option value="Geoint">Geoint</option>
@@ -182,16 +189,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <option value="Humint">Humint</option>
                         <option value="Cybint">Cybint</option>
                     </select>
+                    <label class="mb-1">Tautan</label>
                     <input type="text" name="link" placeholder="Tautan Referensi">
                     <button type="submit">Tambah Referensi</button>
                 </form>
                 <a href="../index.php" style="text-decoration: none;">
-                        <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
+                    <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
                 </a>
             </section>
         </div>
     </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
 </html>

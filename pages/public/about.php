@@ -25,7 +25,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
     <title>Tentang - FINDxDataTrace</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -34,7 +34,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
     <div id="container-custom">
 
         <!-- Header : Start -->
-                 <!-- Video : Start -->
+        <!-- Video : Start -->
         <video id="bg-vid" muted autoplay loop>
             <source src="../../assets/videos/background.mp4">
         </video>
@@ -65,7 +65,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                     <p style="margin-bottom: 20px; text-align: justify;">
                         Dikembangkan dengan pendekatan modular, platform ini memberi fleksibilitas bagi pengguna dalam memilih dan menerapkan alat sesuai kebutuhan investigasi. Fokus utama FINDxDataTrace adalah menyediakan layanan yang efisien dan aman bagi profesional, tanpa mengorbankan prinsip-prinsip legalitas. Data yang dikumpulkan berasal dari sumber terbuka yang sah sehingga mematuhi kebijakan privasi, dan memungkinkan pengguna fokus pada interpretasi serta analisis data tanpa risiko pelanggaran hukum.
                     </p>
-                    
+
                     <p style="margin-bottom: 20px; text-align: justify;">
                         Platform FINDxDataTrace merupakan hasil kerja sama dengan PT DataTrace Forensics Lab, perusahaan forensik digital yang telah berpengalaman lebih dari satu dekade dalam keamanan siber, investigasi, dan intelijen. Dengan kantor pusat di Banyumas, Indonesia, PT DataTrace memiliki operasi di berbagai wilayah strategis termasuk New York, Jakarta, dan Sumatra, serta memiliki rekam jejak yang mengesankan dalam menangani lebih dari 150 klien dari berbagai sektor. Di antara layanan utamanya adalah Digital Forensics Lab Setup, yang membantu organisasi mendirikan laboratorium forensik untuk pencegahan dan penanganan kejahatan siber, serta Mobile Forensics, di mana perusahaan telah menangani lebih dari 250 kasus perangkat seluler.
                     </p>
@@ -88,11 +88,11 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
     <!-- Container : End -->
 
     <footer>
-      <p style="font-size: 18px; font-weight: bold;">&copy; 2024 FINDxDataTrace. All rights reserved.</p>
+        <p style="font-size: 18px; font-weight: bold;">&copy; 2024 FINDxDataTrace. All rights reserved.</p>
     </footer>
 
     <!-- Loading Screen : Start -->
-    <div id="loading-screen">
+    <div id="">
         <div class='track'>
             <div class='spinner'></div>
         </div>

@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Referensi - FINDxDataTrace</title>
         <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <style>
             body {
                 background-color: #121212;
@@ -113,7 +114,9 @@ if ($result->num_rows > 0) {
         <section>
             <h2>Form Edit Referensi</h2>
             <form action="functions/update.php" method="POST">
+                <label class="mb-1">Nama Referensi</label>
                 <input type="text" name="name" placeholder="<?php echo htmlspecialchars($row['name']); ?>" required>
+                <label class="mb-3">Kategori</label>
                 <select name="type" id="type">
                     <option value="Osint" <?php if ($row['type'] == 'Osint') echo 'selected'; ?>>Osint</option>
                     <option value="Geoint" <?php if ($row['type'] == 'Geoint') echo 'selected'; ?>>Geoint</option>
@@ -121,6 +124,7 @@ if ($result->num_rows > 0) {
                     <option value="Humint" <?php if ($row['type'] == 'Humint') echo 'selected'; ?>>Humint</option>
                     <option value="Cybint" <?php if ($row['type'] == 'Cybint') echo 'selected'; ?>>Cybint</option>
                 </select>
+                <label class="mb-1">Tautan</label>
                 <input type="text" name="link" placeholder="<?php echo htmlspecialchars($row['link']); ?>">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <button type="submit">Edit Referensi</button>
@@ -139,3 +143,8 @@ if ($result->num_rows > 0) {
 // Menutup koneksi
 $conn->close();
     ?>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    </html>

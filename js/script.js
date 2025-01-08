@@ -7,6 +7,7 @@ const blurred = document.querySelector('#blur');
 // Sidebar Value
 const tools = document.getElementsByClassName('tools');
 const iframeTitle = document.getElementById('iframe-title');
+const iframeDesc = document.getElementById('iframe-Desc');
 const iframeId = document.getElementById('iframe-id');
 const welcomeSection = document.getElementById('welcome-section');
 const iframeSection = document.getElementById('iframe-section');
@@ -20,7 +21,7 @@ function hideLoadingScreen() {
 }
 
 // set Timeout for loading if page title "Beranda"
-setTimeout(hideLoadingScreen, 4500);
+setTimeout(hideLoadingScreen, 0);
 
 
 // Logic

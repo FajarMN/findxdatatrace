@@ -16,6 +16,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - FINDxDataTrace</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
         body {
@@ -174,7 +175,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <section>
                 <h2>Tambah Berita Baru</h2>
                 <form action="functions/create.php" method="POST" enctype="multipart/form-data">
+                    <label class="mb-1">Nama Referensi</label>
                     <input type="text" name="title" placeholder="Judul Berita" required>
+                    <label class="mb-3">Kategori</label>
                     <select name="category" id="type">
                         <option value="Osint">Osint</option>
                         <option value="Geoint">Geoint</option>
@@ -182,7 +185,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <option value="Humint">Humint</option>
                         <option value="Cybint">Cybint</option>
                     </select>
+                    <label class="mb-1">Gambar</label>
                     <input type="file" name="img" id="img">
+                    <label class="mb-1">Tautan</label>
                     <input type="text" name="link" placeholder="Tautan Referensi Berita">
                     <button type="submit">Tambah Berita</button>
                 </form>
@@ -194,5 +199,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
 </html>

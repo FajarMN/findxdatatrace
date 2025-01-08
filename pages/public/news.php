@@ -106,11 +106,11 @@ $all = mysqli_query($conn, "SELECT * FROM news");
     </footer>
 
     <!-- Loading Screen : Start -->
-    <div id="loading-screen">
+    <!-- <div id="loading-screen">
         <div class='track'>
             <div class='spinner'></div>
         </div>
-    </div>
+    </div> -->
     <!-- Loading Screen : End -->
 
     <script src="../../js/script.js"></script>

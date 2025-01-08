@@ -50,7 +50,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                 <a href="#">Beranda</a>
                 <a href="pages/public/news.php">Berita</a>
                 <a href="pages/public/about.php">Tentang</a>
-                <a href="pages/admin/index.php">Administrator</a>
+                <a href="pages/admin/login.php">Administrator</a>
             </div>
         </nav>
         <!-- Header : End -->
@@ -125,7 +125,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="cybint-list">
                             <?php while ($row = mysqli_fetch_assoc($cybint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?></div>
+                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?> <?php echo $row['ket'] ?></div>
                                 </div>
                             <?php endwhile ?>
                         </div>
@@ -184,7 +184,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
         <p style="font-size: 18px; font-weight: bold;">&copy; 2024 FINDxDataTrace. All rights reserved.</p>
     </footer>
 
-    
+
     <!-- Loading Screen : Start -->
     <div id="loading-screen">
         <div class='track'>
