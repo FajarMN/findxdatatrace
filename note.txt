@@ -1,0 +1,23 @@
+<script>
+    
+    // Define Variable
+    const silverBtn = document.querySelector('#silver-btn');
+    const paketSilver = document.querySelector('#paket-silver');
+    
+    // Default Style
+    paketSilver.style.maxHeight = 0 + 'px';
+    paketSilver.style.overflow = 'hidden';
+    
+    // Logic
+    silverBtn.addEventListener('click', function() {
+        if (paketSilver.style.maxHeight === 0 + 'px') {
+            paketSilver.style.maxHeight = '500px';
+            paketSilver.style.transition = 2 + 's';
+        } else {
+            paketSilver.style.maxHeight = '0px';
+            paketSilver.style.transition = 2 + 's';
+        }
+    })
+    
+    
+</script>
