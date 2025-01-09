@@ -87,7 +87,8 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="geoint-list">
                             <?php while ($row = mysqli_fetch_assoc($geoint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
+                                    <div value='<?php include_once('database/connection.php');
+                                                echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
                                         class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
