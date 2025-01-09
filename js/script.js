@@ -7,7 +7,7 @@ const blurred = document.querySelector('#blur');
 // Sidebar Value
 const tools = document.getElementsByClassName('tools');
 const iframeTitle = document.getElementById('iframe-title');
-const iframeDesc = document.getElementById('iframe-Desc');
+const iframeDesc = document.getElementById('iframe-desc');
 const iframeId = document.getElementById('iframe-id');
 const welcomeSection = document.getElementById('welcome-section');
 const iframeSection = document.getElementById('iframe-section');
@@ -73,6 +73,9 @@ for (let i = 0; i < tools.length; i++) {
 
         // Change Iframe Title
         iframeTitle.textContent = tools[i].textContent;
+
+        // Change Iframe Deesc
+        iframeDesc.textContent = tools[i].getAttribute('desc');
 
         // Getting value from tools value custom attribute
         const toolsValue = tools[i].getAttribute('value');

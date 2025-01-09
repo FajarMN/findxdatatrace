@@ -72,7 +72,8 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="osint-list">
                             <?php while ($row = mysqli_fetch_assoc($osint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;"
+                                    <div value='<?php include_once('database/connection.php');
+                                                echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
                                         class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
@@ -86,7 +87,8 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="geoint-list">
                             <?php while ($row = mysqli_fetch_assoc($geoint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?></div>
+                                    <div value='<?php echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
+                                        class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
                         </div>
@@ -99,7 +101,8 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="socmint-list">
                             <?php while ($row = mysqli_fetch_assoc($socmint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?></div>
+                                    <div value='<?php echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
+                                        class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
                         </div>
@@ -112,7 +115,8 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="humint-list">
                             <?php while ($row = mysqli_fetch_assoc($humint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?></div>
+                                    <div value='<?php echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
+                                        class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
                         </div>
@@ -164,6 +168,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                 <!-- Welcome Section : Start -->
                 <div id="iframe-section" style="width: 100%">
                     <h1 style="margin-bottom: 20px; text-align: center;" id="iframe-title">Osint Tools</h1>
+                    <p style="margin-bottom: 20px; text-align: center;" id="iframe-desc">Deskripsi</p>
                     <iframe src="https://en.wikipedia.org/wiki/Open-source_intelligence" frameborder="0" id="iframe-id" scrolling="yes" style="width: 100%; height: 100vh;"></iframe>
                 </div>
                 <!-- Welcome Section : End -->
