@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2025 at 02:14 PM
+-- Generation Time: Jan 09, 2025 at 06:28 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,8 @@ USE `testing`;
 --
 -- Table structure for table `news`
 --
--- Creation: Dec 23, 2024 at 06:36 PM
---
 
+DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
@@ -39,10 +38,6 @@ CREATE TABLE `news` (
   `link` text NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `news`:
---
 
 --
 -- Dumping data for table `news`
@@ -62,49 +57,47 @@ INSERT INTO `news` (`id`, `title`, `category`, `img`, `link`, `created_at`) VALU
 --
 -- Table structure for table `reference`
 --
--- Creation: Dec 23, 2024 at 06:36 PM
---
 
+DROP TABLE IF EXISTS `reference`;
 CREATE TABLE `reference` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `type` enum('Osint','Geoint','Socmint','Humint','Cybint') NOT NULL,
-  `link` text NOT NULL
+  `keterangan` text NOT NULL,
+  `category` enum('Osint','Geoint','Socmint','Humint','Cybint') NOT NULL,
+  `link` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `reference`:
---
 
 --
 -- Dumping data for table `reference`
 --
 
-INSERT INTO `reference` (`id`, `name`, `type`, `link`) VALUES
-(3, 'Maltego', 'Osint', 'https://www.maltego.com/'),
-(6, 'Osint Framework', 'Osint', 'https://osintframework.com/'),
-(7, 'Censys', 'Osint', 'https://censys.com/'),
-(12, 'BuiltWith', 'Osint', 'https://builtwith.com/'),
-(17, 'Robtex', 'Osint', 'https://www.robtex.com/'),
-(18, 'Storyful', 'Socmint', 'https://storyful.com/'),
-(26, 'Mention', 'Socmint', 'https://mention.com/en/'),
-(30, 'Brand24', 'Socmint', 'https://brand24.com/'),
-(31, 'SociableKIT', 'Socmint', 'https://www.sociablekit.com/'),
-(33, 'Elfsight', 'Socmint', 'https://elfsight.com/'),
-(35, 'ArcGIS', 'Geoint', 'https://www.arcgis.com/'),
-(37, 'QGIS', 'Geoint', 'https://www.qgis.org/'),
-(39, 'Sentinel Hub', 'Geoint', 'https://www.sentinel-hub.com/'),
-(42, 'SAS Planet', 'Geoint', 'https://www.sasgis.org/'),
-(46, 'DroneDeploy', 'Geoint', 'https://www.dronedeploy.com/'),
-(50, 'CrowdStrike', 'Cybint', 'https://www.crowdstrike.com/en-us/'),
-(53, 'OpenCTI', 'Cybint', 'https://filigran.io/'),
-(56, 'VirusTotal', 'Cybint', 'https://www.virustotal.com/gui/'),
-(64, 'Babel Street', 'Humint', 'https://www.babelstreet.com/'),
-(67, 'GeoTime', 'Humint', 'https://www.geotime.com/'),
-(69, 'Trace Labs', 'Humint', 'https://www.tracelabs.org/'),
-(70, 'Hunchly', 'Humint', 'https://hunch.ly/'),
-(71, 'Maltego', 'Humint', 'https://www.maltego.com/'),
-(72, 'OSINT Combine', 'Humint', 'https://www.osintcombine.com/');
+INSERT INTO `reference` (`id`, `name`, `keterangan`, `category`, `link`, `created_at`) VALUES
+(3, 'Maltego', 'test', 'Osint', 'https://www.maltego.com/', '2025-01-09 21:33:14'),
+(6, 'Osint Framework', 'tesf 2', 'Osint', 'https://osintframework.com/', '2025-01-09 21:33:14'),
+(7, 'Censys', '', 'Osint', 'https://censys.com/', '2025-01-09 21:33:14'),
+(12, 'BuiltWith', '', 'Osint', 'https://builtwith.com/', '2025-01-09 21:33:14'),
+(17, 'Robtex', 'test pukii gak jelas kayak urutan presentasi huha', 'Osint', 'https://www.robtex.com/', '2025-01-09 21:33:14'),
+(18, 'Storyful', '', 'Socmint', 'https://storyful.com/', '2025-01-09 21:33:14'),
+(26, 'Mention', '', 'Socmint', 'https://mention.com/en/', '2025-01-09 21:33:14'),
+(30, 'Brand24', '', 'Socmint', 'https://brand24.com/', '2025-01-09 21:33:14'),
+(31, 'SociableKIT', '', 'Socmint', 'https://www.sociablekit.com/', '2025-01-09 21:33:14'),
+(33, 'Elfsight', '', 'Socmint', 'https://elfsight.com/', '2025-01-09 21:33:14'),
+(35, 'ArcGIS', '', 'Geoint', 'https://www.arcgis.com/', '2025-01-09 21:33:14'),
+(37, 'QGIS', '', 'Geoint', 'https://www.qgis.org/', '2025-01-09 21:33:14'),
+(39, 'Sentinel Hub', '', 'Geoint', 'https://www.sentinel-hub.com/', '2025-01-09 21:33:14'),
+(42, 'SAS Planet', '', 'Geoint', 'https://www.sasgis.org/', '2025-01-09 21:33:14'),
+(46, 'DroneDeploy', '', 'Geoint', 'https://www.dronedeploy.com/', '2025-01-09 21:33:14'),
+(50, 'CrowdStrike', '', 'Cybint', 'https://www.crowdstrike.com/en-us/', '2025-01-09 21:33:14'),
+(53, 'OpenCTI', '', 'Cybint', 'https://filigran.io/', '2025-01-09 21:33:14'),
+(56, 'VirusTotal', '', 'Cybint', 'https://www.virustotal.com/gui/', '2025-01-09 21:33:14'),
+(64, 'Babel Street', '', 'Humint', 'https://www.babelstreet.com/', '2025-01-09 21:33:14'),
+(67, 'GeoTime', '', 'Humint', 'https://www.geotime.com/', '2025-01-09 21:33:14'),
+(69, 'Trace Labs', '', 'Humint', 'https://www.tracelabs.org/', '2025-01-09 21:33:14'),
+(70, 'Hunchly', '', 'Humint', 'https://hunch.ly/', '2025-01-09 21:33:14'),
+(71, 'Maltego', '', 'Humint', 'https://www.maltego.com/', '2025-01-09 21:33:14'),
+(72, 'OSINT Combine', '', 'Humint', 'https://www.osintcombine.com/', '2025-01-09 21:33:14'),
+(82, 'adsadsadmemek', 'asdasd', 'Osint', 'asddsa', '2025-01-10 00:20:46');
 
 --
 -- Indexes for dumped tables
@@ -130,13 +123,13 @@ ALTER TABLE `reference`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
