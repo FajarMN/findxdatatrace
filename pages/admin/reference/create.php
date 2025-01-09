@@ -181,6 +181,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <form action="functions/create.php" method="POST">
                     <label class="mb-1">Nama Referensi</label>
                     <input type="text" name="name" placeholder="Nama Referensi" required>
+                    <label class="mb-1">Keterangan</label>
+                    <input type="text" name="keterangan" placeholder="Keterangan Referensi" required>
                     <label class="mb-3">Kategori</label>
                     <select name="type" id="type">
                         <option value="Osint">Osint</option>
@@ -193,7 +195,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <input type="text" name="link" placeholder="Tautan Referensi">
                     <button type="submit">Tambah Referensi</button>
                 </form>
-                <a href="../index.php" style="text-decoration: none;">
+                <a href="../referensi.php" style="text-decoration: none;">
                     <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
                 </a>
             </section>

@@ -44,7 +44,7 @@ $socmint = mysqli_query($conn, "SELECT * FROM news WHERE category = 'Socmint'");
                 <a href="../../../index.php">Beranda</a>
                 <a href="../../public/news.php">Berita</a>
                 <a href="../about.php">Tentang</a>
-                <a href="../../admin/index.php">Administrator</a>
+                <a href="../../admin/login.php">Administrator</a>
             </div>
         </nav>
 

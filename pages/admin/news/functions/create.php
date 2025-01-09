@@ -46,7 +46,7 @@ if ($_FILES["img"]["size"] > 500000) {
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+    // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         echo "The file " . basename($_FILES["img"]["name"]) . " has been uploaded.";
@@ -69,6 +69,5 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect kembali ke halaman admin
-header("Location: ../../index.php");
+header("Location: ../../berita.php");
 exit();
-?>

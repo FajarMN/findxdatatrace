@@ -3,7 +3,7 @@ session_start();
 
 // Cek apakah pengguna sudah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: login.php");
+    header("location: berita.php");
     exit;
 }
 ?>
@@ -191,7 +191,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <input type="text" name="link" placeholder="Tautan Referensi Berita">
                     <button type="submit">Tambah Berita</button>
                 </form>
-                <a href="../index.php" style="text-decoration: none;">
+                <a href="../berita.php" style="text-decoration: none;">
                     <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
                 </a>
             </section>

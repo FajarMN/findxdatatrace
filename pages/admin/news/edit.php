@@ -113,23 +113,23 @@ if ($result->num_rows > 0) {
         <section>
             <h2>Form Edit Berita</h2>
             <form action="functions/update.php" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="title" placeholder="<?php echo $row['title']; ?>" value="<?php echo $row['title']; ?>" required>
-                    <select name="category" id="type">
-                        <option value="Osint" <?php if ($row['category'] == 'Osint') echo 'selected'; ?>>Osint</option>
-                        <option value="Geoint" <?php if ($row['category'] == 'Geoint') echo 'selected'; ?>>Geoint</option>
-                        <option value="Socmint" <?php if ($row['category'] == 'Socmint') echo 'selected'; ?>>Socmint</option>
-                        <option value="Humint" <?php if ($row['category'] == 'Humint') echo 'selected'; ?>>Humint</option>
-                        <option value="Cybint" <?php if ($row['category'] == 'Cybint') echo 'selected'; ?>>Cybint</option>
-                    </select>
-                    <input type="file" name="img" id="img">
-                    <input type="text" name="link" placeholder="<?php echo $row['link']; ?>" value="<?php echo $row['link']; ?>">
-                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <input type="hidden" name="postedImage" value="<?php echo $row['img']; ?>">
-                    <button type="submit">Edit Berita</button>
-                </form>
-                <a href="../index.php" style="text-decoration: none;">
-                    <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
-                </a>
+                <input type="text" name="title" placeholder="<?php echo $row['title']; ?>" value="<?php echo $row['title']; ?>" required>
+                <select name="category" id="type">
+                    <option value="Osint" <?php if ($row['category'] == 'Osint') echo 'selected'; ?>>Osint</option>
+                    <option value="Geoint" <?php if ($row['category'] == 'Geoint') echo 'selected'; ?>>Geoint</option>
+                    <option value="Socmint" <?php if ($row['category'] == 'Socmint') echo 'selected'; ?>>Socmint</option>
+                    <option value="Humint" <?php if ($row['category'] == 'Humint') echo 'selected'; ?>>Humint</option>
+                    <option value="Cybint" <?php if ($row['category'] == 'Cybint') echo 'selected'; ?>>Cybint</option>
+                </select>
+                <input type="file" name="img" id="img">
+                <input type="text" name="link" placeholder="<?php echo $row['link']; ?>" value="<?php echo $row['link']; ?>">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="postedImage" value="<?php echo $row['img']; ?>">
+                <button type="submit">Edit Berita</button>
+            </form>
+            <a href="../berita.php" style="text-decoration: none;">
+                <button style="background-color: #cc0000; color: white; margin-top: 10px;">Kembali</button>
+            </a>
         </section>
 
     <?php

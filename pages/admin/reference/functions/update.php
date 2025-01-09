@@ -5,12 +5,13 @@ include_once('../../../../database/connection.php');
 
 // Menangkap data dari form
 $id = $_POST['id'];
-$name= $_POST['name'];
+$name = $_POST['name'];
+$keterangan = $_POST['keterangan'];
 $type = $_POST['type'];
 $link = $_POST['link'];
 
 // Memperbarui data alat
-$sql = "UPDATE reference SET name='$name', type='$type', link='$link' WHERE id='$id'";
+$sql = "UPDATE reference SET name='$name', keterangan='$keterangan',category='$type', link='$link' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Alat berhasil diperbarui!";
@@ -22,6 +23,5 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect kembali ke halaman admin
-header("Location: ../../index.php");
+header("Location: ../../referensi.php");
 exit();
-?>

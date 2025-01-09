@@ -4,11 +4,11 @@
 include_once('../../database/connection.php');
 
 // Fetch Data
-$osint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Osint'");
-$geoint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Geoint'");
-$socmint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Socmint'");
-$humint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Humint'");
-$cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
+$osint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Osint'");
+$geoint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Geoint'");
+$socmint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Socmint'");
+$humint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Humint'");
+$cybint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Cybint'");
 
 ?>
 
@@ -44,7 +44,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                 <a href="../../index.php">Beranda</a>
                 <a href="news.php">Berita</a>
                 <a href="#">Tentang</a>
-                <a href="../admin/index.php">Administrator</a>
+                <a href="../admin/login.php">Administrator</a>
             </div>
         </nav>
         <!-- Header : End -->

@@ -1,17 +1,14 @@
 <?php
 session_start();
-
 include_once('../../database/connection.php');
 
-$data = include 'get_referensi.php';
+$data = include 'get_berita.php';
 
 // Cek apakah pengguna sudah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: login.php");
     exit;
 }
-
-
 
 $categories = [];
 foreach ($data as $row) {
@@ -125,14 +122,14 @@ $filtered_data = $selected_category
     </header>
     <nav style="padding-bottom: 5px; padding-top: 5px;">
         <div class="nav-wrapper">
-            <a href="berita.php">Berita</a>
-            <a href="#">Referensi</a>
+            <a href="#">Berita</a>
+            <a href="referensi.php">Referensi</a>
         </div>
     </nav>
 
     <div class="container">
         <div class="wrapper">
-            <form method="GET" action="referensi_category_result.php">
+            <form method="GET" action="berita_category_result.php">
                 <label for="category">Pilih Kategori:</label>
                 <select name="category_1" id="category_1">
                     <option value="">-- Semua Kategori --</option>
@@ -146,8 +143,8 @@ $filtered_data = $selected_category
             </form>
 
             <section>
-                <a href="reference/create.php">
-                    <button style="width: 100%; font-weight: bold;">Tambah Referensi</button>
+                <a href="news/create.php">
+                    <button style="width: 100%; font-weight: bold;">Tambah Berita</button>
                 </a>
             </section>
 
@@ -158,10 +155,10 @@ $filtered_data = $selected_category
                             <thead>
                                 <tr>
                                     <th class="text-center" width="1%">No</th>
-                                    <th class="text-center" width="1%">Nama Referensi</th>
-                                    <th class="text-center">Keterangan</th>
-                                    <th class="text-center">Type</th>
-                                    <th class="text-center">Link</th>
+                                    <th class="text-center" width="1%">Title</th>
+                                    <th class="text-center">Category</th>
+                                    <th class="text-center">img</th>
+                                    <th class="text-center">link</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -176,21 +173,26 @@ $filtered_data = $selected_category
                                             $no;
                                             $no++; ?>
                                         </td>
-                                        <td><?php echo $user_data['name']; ?></td>
-                                        <td><?php echo $user_data['keterangan']; ?></td>
+                                        <td><?php echo $user_data['title']; ?></td>
                                         <td><?php echo $user_data['category']; ?></td>
-                                        <td><?php if (!empty($user_data['link'])) {
+                                        <td><?php if (!empty($user_data['img'])) {
                                                 echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
                                             } else {
                                                 echo 'Tidak ada gambar';
                                             }; ?>
                                         </td>
+                                        <td><?php if (!empty($user_data['link'])) {
+                                                echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
+                                            } else {
+                                                echo 'Tidak ada link';
+                                            }; ?>
+                                        </td>
                                         <td class="crud-buttons">
-                                            <form action="reference/edit.php" method="post">
+                                            <form action="news/edit.php" method="post">
                                                 <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
                                                 <button type="submit">Edit</button>
                                             </form>
-                                            <form action="reference/functions/delete.php" method="post">
+                                            <form action="news/functions/delete.php" method="post">
                                                 <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
                                                 <button type="submit">Hapus</button>
                                             </form>

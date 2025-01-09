@@ -5,11 +5,12 @@ include_once('../../../../database/connection.php');
 
 // Menangkap data dari form
 $name = $_POST['name'];
+$keterangan = $_POST['keterangan'];
 $type = $_POST['type'];
 $link = $_POST['link'];
 
 // Menyisipkan data ke tabel alat
-$sql = "INSERT INTO reference (name, type, link) VALUES ('$name', '$type', '$link')";
+$sql = "INSERT INTO reference (name, keterangan ,category, link) VALUES ('$name','$keterangan' ,'$type', '$link')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Alat berhasil ditambahkan!";
@@ -21,6 +22,5 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect kembali ke halaman admin
-header("Location: ../../index.php");
+header("Location: ../../referensi.php");
 exit();
-?>

@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include_once('../../database/connection.php');
 
 $data = include 'get_referensi.php';
@@ -10,8 +9,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: login.php");
     exit;
 }
-
-
 
 $categories = [];
 foreach ($data as $row) {

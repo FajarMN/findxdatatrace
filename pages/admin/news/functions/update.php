@@ -69,6 +69,6 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect kembali ke halaman admin
-header("Location: ../../index.php");
+header("Location: ../../berita.php");
 exit();
 ?>

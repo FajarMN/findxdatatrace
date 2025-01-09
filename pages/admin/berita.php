@@ -1,6 +1,9 @@
 <?php
 session_start();
+
 include_once('../../database/connection.php');
+
+$data = include 'get_berita.php';
 
 // Cek apakah pengguna sudah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -8,18 +11,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Menangani filter berdasarkan kategori (menggunakan GET untuk mendapatkan filter)
-$filterCategory = isset($_GET['filter_category']) ? $_GET['filter_category'] : '';
 
-// Menyusun query berdasarkan filter kategori
-$query = "SELECT * FROM news";
-if (!empty($filterCategory)) {
-    $query .= " WHERE category = '" . mysqli_real_escape_string($conn, $filterCategory) . "'";
+
+$categories = [];
+foreach ($data as $row) {
+    if (!in_array($row['category'], $categories)) {
+        $categories[] = $row['category'];
+    }
 }
-$query .= " ORDER BY created_at DESC";
 
-// Eksekusi query
-$result = mysqli_query($conn, $query);
+$selected_category = isset($_GET['category_1']) ? $_GET['category_1'] : '';
+$filtered_data = $selected_category
+    ? array_filter($data, fn($row) => $row['category'] === $selected_category)
+    : $data;
 ?>
 
 <!DOCTYPE html>
@@ -128,83 +132,82 @@ $result = mysqli_query($conn, $query);
 
     <div class="container">
         <div class="wrapper">
-            <!-- Form Filter -->
-            <form class="filter-form" method="get" action="../admin/berita.php ">
-                <label for="filter_category">Filter Berdasarkan Kategori:</label>
-                <select name="filter_category" id="filter_category">
-                    <option value="">Semua</option>
-                    <option value="Osint" <?= isset($_GET['filter_category']) && $_GET['filter_category'] == 'Osint' ? 'selected' : '' ?>>Osint</option>
-                    <option value="Geoint" <?= isset($_GET['filter_category']) && $_GET['filter_category'] == 'Geoint' ? 'selected' : '' ?>>Geoint</option>
-                    <option value="Humint" <?= isset($_GET['filter_category']) && $_GET['filter_category'] == 'Humint' ? 'selected' : '' ?>>Humint</option>
-                    <option value="Cybint" <?= isset($_GET['filter_category']) && $_GET['filter_category'] == 'Cybint' ? 'selected' : '' ?>>Cybint</option>
-                    <option value="Socmint" <?= isset($_GET['filter_category']) && $_GET['filter_category'] == 'Socmint' ? 'selected' : '' ?>>Socmint</option>
+            <form method="GET" action="berita_category_result.php">
+                <label for="category">Pilih Kategori:</label>
+                <select name="category_1" id="category_1">
+                    <option value="">-- Semua Kategori --</option>
+                    <option value="Osint">Osint</option>
+                    <option value="Geoint">Geoint</option>
+                    <option value="Socmint">Socmint</option>
+                    <option value="Humint">Humint</option>
+                    <option value="Cybint">Cybint</option>
                 </select>
                 <button type="submit">Filter</button>
             </form>
 
             <section>
-                <a href="reference/create.php">
-                    <button style="width: 100%; font-weight: bold;">Tambah Referensi</button>
+                <a href="news/create.php">
+                    <button style="width: 100%; font-weight: bold;">Tambah Berita</button>
                 </a>
             </section>
 
             <section>
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-center" width="1%">No</th>
-                                <th class="text-center" width="1%">Title</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">img</th>
-                                <th class="text-center">link</th>
-                                <th class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include_once('../../database/connection.php');
-                            $result = mysqli_query($conn, "select * from news order by created_at desc");
-                            ?>
-                            <?php
-                            $no = 1;
-                            while ($user_data = mysqli_fetch_array($result)) { ?>
+                    <?php if (count($filtered_data) > 0): ?>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <?php
-                                        echo
-                                        $no;
-                                        $no++; ?>
-                                    </td>
-                                    <td><?php echo $user_data['title']; ?></td>
-                                    <td><?php echo $user_data['category']; ?></td>
-                                    <td><?php if (!empty($user_data['img'])) {
-                                            echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
-                                        } else {
-                                            echo 'Tidak ada gambar';
-                                        }; ?>
-                                    </td>
-                                    <td><?php if (!empty($user_data['link'])) {
-                                            echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
-                                        } else {
-                                            echo 'Tidak ada link';
-                                        }; ?>
-                                    </td>
-                                    <td class="crud-buttons">
-                                        <form action="news/edit.php" method="post">
-                                            <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
-                                            <button type="submit">Edit</button>
-                                        </form>
-                                        <form action="reference/functions/delete.php">
-                                            <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
-                                            <button type="submit">Hapus</button>
-                                        </form>
-
-                                    </td>
+                                    <th class="text-center" width="1%">No</th>
+                                    <th class="text-center" width="1%">Judul Berita</th>
+                                    <th class="text-center">Category</th>
+                                    <th class="text-center">img</th>
+                                    <th class="text-center">Link</th>
+                                    <th class="text-center">Aksi</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                foreach ($filtered_data as $user_data):  ?>
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            echo
+                                            $no;
+                                            $no++; ?>
+                                        </td>
+                                        <td><?php echo $user_data['title']; ?></td>
+                                        <td><?php echo $user_data['category']; ?></td>
+                                        <td><?php if (!empty($user_data['img'])) {
+                                                echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
+                                            } else {
+                                                echo 'Tidak ada gambar';
+                                            }; ?>
+                                        </td>
+                                        <td><?php if (!empty($user_data['link'])) {
+                                                echo '<a href="' . htmlspecialchars($user_data['link']) . '" target="_blank">Baca lebih lanjut</a>';
+                                            } else {
+                                                echo 'Tidak ada gambar';
+                                            }; ?>
+                                        </td>
+                                        <td class="crud-buttons">
+                                            <form action="news/edit.php" method="post">
+                                                <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
+                                                <button type="submit">Edit</button>
+                                            </form>
+                                            <form action="news/functions/delete.php" method="post">
+                                                <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($user_data['id']) . '">'; ?>
+                                                <button type="submit">Hapus</button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php else: ?>
+                        <p>Tidak ada data tersedia.</p>
+                    <?php endif; ?>
                 </div>
             </section>
         </div>

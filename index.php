@@ -5,11 +5,11 @@ include_once('database/connection.php');
 
 // Fetch Data
 $all = mysqli_query($conn, "SELECT * FROM reference");
-$osint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Osint'");
-$geoint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Geoint'");
-$socmint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Socmint'");
-$humint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Humint'");
-$cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
+$osint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Osint'");
+$geoint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Geoint'");
+$socmint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Socmint'");
+$humint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Humint'");
+$cybint = mysqli_query($conn, "SELECT * FROM reference WHERE category = 'Cybint'");
 
 ?>
 
@@ -70,10 +70,11 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                     <div id="sidebar-osint">
                         <button id="btn-osint">Alat Osint</button>
                         <div id="osint-list">
-                            <?php while ($row = mysqli_fetch_assoc($osint)) : ?>
+                            <?php include_once('database/connection.php');
+                            while ($row = mysqli_fetch_assoc($osint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php include_once('database/connection.php');
-                                                echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;"
+                                    <div value='<?php
+                                                echo $row['link'] ?>' desc='<?php echo $row['keterangan'] ?>' style="cursor: pointer;"
                                         class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
@@ -130,7 +131,7 @@ $cybint = mysqli_query($conn, "SELECT * FROM reference WHERE type = 'Cybint'");
                         <div id="cybint-list">
                             <?php while ($row = mysqli_fetch_assoc($cybint)) : ?>
                                 <div class="tools-list">
-                                    <div value='<?php echo $row['link'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?> <?php echo $row['ket'] ?></div>
+                                    <div value='<?php echo $row['link'] ?>' desc='<?php echo $row['desc'] ?>' style="cursor: pointer;" class="tools"><?php echo $row['name'] ?></div>
                                 </div>
                             <?php endwhile ?>
                         </div>

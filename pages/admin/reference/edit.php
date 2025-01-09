@@ -115,22 +115,24 @@ if ($result->num_rows > 0) {
             <h2>Form Edit Referensi</h2>
             <form action="functions/update.php" method="POST">
                 <label class="mb-1">Nama Referensi</label>
-                <input type="text" name="name" placeholder="<?php echo htmlspecialchars($row['name']); ?>" required>
+                <input type="text" value="<?php echo htmlspecialchars($row['name']); ?>" name="name" placeholder="<?php echo htmlspecialchars($row['name']); ?>" required>
+                <label class="mb-1">Keterangan Referensi</label>
+                <input type="text" value="<?php echo htmlspecialchars($row['keterangan']); ?>" name="keterangan" placeholder="<?php echo htmlspecialchars($row['keterangan']); ?>" required>
                 <label class="mb-3">Kategori</label>
                 <select name="type" id="type">
-                    <option value="Osint" <?php if ($row['type'] == 'Osint') echo 'selected'; ?>>Osint</option>
-                    <option value="Geoint" <?php if ($row['type'] == 'Geoint') echo 'selected'; ?>>Geoint</option>
-                    <option value="Socmint" <?php if ($row['type'] == 'Socmint') echo 'selected'; ?>>Socmint</option>
-                    <option value="Humint" <?php if ($row['type'] == 'Humint') echo 'selected'; ?>>Humint</option>
-                    <option value="Cybint" <?php if ($row['type'] == 'Cybint') echo 'selected'; ?>>Cybint</option>
+                    <option value="Osint" <?php if ($row['category'] == 'Osint') echo 'selected'; ?>>Osint</option>
+                    <option value="Geoint" <?php if ($row['category'] == 'Geoint') echo 'selected'; ?>>Geoint</option>
+                    <option value="Socmint" <?php if ($row['category'] == 'Socmint') echo 'selected'; ?>>Socmint</option>
+                    <option value="Humint" <?php if ($row['category'] == 'Humint') echo 'selected'; ?>>Humint</option>
+                    <option value="Cybint" <?php if ($row['category'] == 'Cybint') echo 'selected'; ?>>Cybint</option>
                 </select>
                 <label class="mb-1">Tautan</label>
-                <input type="text" name="link" placeholder="<?php echo htmlspecialchars($row['link']); ?>">
+                <input type="text" value="<?php echo htmlspecialchars($row['link']); ?>" name="link" placeholder="<?php echo htmlspecialchars($row['link']); ?>">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <button type="submit">Edit Referensi</button>
             </form>
 
-            <a href="../index.php">
+            <a href="../referensi.php">
                 <button style="background-color: red; margin-top: 10px; color: white">Kembali</button>
             </a>
         </section>

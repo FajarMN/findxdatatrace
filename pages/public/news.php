@@ -41,7 +41,7 @@ $all = mysqli_query($conn, "SELECT * FROM news");
                 <a href="../../index.php">Beranda</a>
                 <a href="#">Berita</a>
                 <a href="about.php">Tentang</a>
-                <a href="../admin/index.php">Administrator</a>
+                <a href="../admin/login.php">Administrator</a>
             </div>
         </nav>
 
